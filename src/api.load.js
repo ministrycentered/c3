@@ -32,6 +32,10 @@ c3_chart_fn.load = function (args) {
             config.data_axes[id] = args.axes[id];
         });
     }
+    // update tooltip value format if exists
+    if ('tooltip_format_value' in args) {
+        config.tooltip_format_value = args.tooltip_format_value;
+    }
     // update colors if exists
     if ('colors' in args) {
         Object.keys(args.colors).forEach(function (id) {

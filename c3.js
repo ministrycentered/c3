@@ -2695,7 +2695,7 @@
     c3_chart_internal_fn.getCurrentHeight = function () {
         var $$ = this, config = $$.config,
             h = config.size_height ? config.size_height : $$.getParentHeight();
-        return h > 0 ? h : 320 / ($$.hasType('gauge') && !config.gauge_fullCircle ? 2 : 1);
+        return h > 0 ? h : 320 / ($$.hasType('gauge') && !config.gauge_fullCircle ? 2 : 1); 
     };
     c3_chart_internal_fn.getCurrentPaddingTop = function () {
         var $$ = this,
@@ -2785,8 +2785,8 @@
         var $$ = this, config = $$.config, h = 30;
         if (axisId === 'x' && !config.axis_x_show) { return 8; }
         if (axisId === 'x' && config.axis_x_height) { return config.axis_x_height; }
-        if (axisId === 'y' && !config.axis_y_show) {
-            return config.legend_show && !$$.isLegendRight && !$$.isLegendInset ? 10 : 1;
+        if (axisId === 'y' && !config.axis_y_show) { 
+            return config.legend_show && !$$.isLegendRight && !$$.isLegendInset ? 10 : 1; 
         }
         if (axisId === 'y2' && !config.axis_y2_show) { return $$.rotated_padding_top; }
         // Calculate x axis height when tick rotated
@@ -6318,6 +6318,10 @@
             Object.keys(args.axes).forEach(function (id) {
                 config.data_axes[id] = args.axes[id];
             });
+        }
+        // update tooltip value format if exists
+        if ('tooltip_format_value' in args) {
+            config.tooltip_format_value = args.tooltip_format_value;
         }
         // update colors if exists
         if ('colors' in args) {
