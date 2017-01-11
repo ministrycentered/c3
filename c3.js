@@ -1278,6 +1278,7 @@
             tooltip_contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
                 return this.getTooltipContent ? this.getTooltipContent(d, defaultTitleFormat, defaultValueFormat, color) : '';
             },
+            tooltip_total: false,
             tooltip_init_show: false,
             tooltip_init_x: 0,
             tooltip_init_position: {top: '0px', left: '50px'},
@@ -3887,7 +3888,7 @@
             titleFormat = config.tooltip_format_title || defaultTitleFormat,
             nameFormat = config.tooltip_format_name || function (name) { return name; },
             valueFormat = config.tooltip_format_value || defaultValueFormat,
-            text, i, title, value, name, bgcolor,
+            text, i, title, value, name, bgcolor, total,
             orderAsc = $$.isOrderAsc();
 
         if (config.data_groups.length === 0) {
@@ -3929,6 +3930,13 @@
                 text += "<td class='value'>" + value + "</td>";
                 text += "</tr>";
             }
+        }
+        if (config.tooltip_total) {
+            total = d.reduce(function (a, b) { return a + b.value; }, 0);
+            text += "<tr class='" + CLASS.tooltipName + "-total'>";
+            text += "<td class='name'>Total</td>";
+            text += "<td class='value'>" + valueFormat(total) + "</td>";
+            text += "</tr>";
         }
         return text + "</table>";
     };

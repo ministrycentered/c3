@@ -121,7 +121,7 @@ c3_chart_internal_fn.getDefaultConfig = function () {
         axis_y_label: {},
         axis_y_tick_format: undefined,
         axis_y_tick_outer: true,
-        axis_y_tick_values: null,        
+        axis_y_tick_values: null,
         axis_y_tick_rotate: 0,
         axis_y_tick_count: undefined,
         axis_y_tick_time_value: undefined,
@@ -211,6 +211,7 @@ c3_chart_internal_fn.getDefaultConfig = function () {
         tooltip_contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
             return this.getTooltipContent ? this.getTooltipContent(d, defaultTitleFormat, defaultValueFormat, color) : '';
         },
+        tooltip_total: false,
         tooltip_init_show: false,
         tooltip_init_x: 0,
         tooltip_init_position: {top: '0px', left: '50px'},
