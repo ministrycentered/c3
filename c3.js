@@ -6305,6 +6305,12 @@
         if ('categories' in args && $$.isCategorized()) {
             config.axis_x_categories = args.categories;
         }
+
+        // update donut label format if exists
+        if ('donut_label_format' in args) {
+          config.donut_label_format = args.donut_label_format;
+        }
+
         // update x axis tick format if exists
         if ('axis_x_tick_format' in args) {
             config.axis_x_tick_format = args.axis_x_tick_format;
